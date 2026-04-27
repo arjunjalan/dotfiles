@@ -8,6 +8,7 @@ Every layer of machine setup is scripted and versioned. On any new Linux machine
 
 ## Structure
 
+```text
 dotfiles/
 ├── machine-setup/        — OS and application install scripts
 │   ├── setup.sh          — Layer 1: installs system dependencies
@@ -17,6 +18,7 @@ dotfiles/
 │       ├── extensions.txt — list of VS Code extensions to install
 │       └── settings.json  — VS Code user settings (Linux-ready)
 └── README.md
+```
 
 ## Usage
 
