@@ -12,6 +12,10 @@ dotfiles/
 ├── machine-setup/        — OS and application install scripts
 │   ├── setup.sh          — Layer 1: installs system dependencies
 │   └── git_config.sh     — Layer 2: configures Git and GitHub auth
+├── app_config/
+│   └── vscode/
+│       ├── extensions.txt — list of VS Code extensions to install
+│       └── settings.json  — VS Code user settings (Linux-ready)
 └── README.md
 
 ## Usage
@@ -30,6 +34,14 @@ bash setup.sh
 **Step 3 — Configure Git and GitHub:**
 
 bash git_config.sh
+
+**Step 4 — Install VS Code extensions:**
+
+cat ~/dotfiles/app_config/vscode/extensions.txt | xargs -L1 code --install-extension
+
+**Step 5 — Apply VS Code settings:**
+
+cp ~/dotfiles/app_config/vscode/settings.json ~/.config/Code/User/settings.json
 
 ## Roadmap
 
