@@ -1,0 +1,102 @@
+{
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.tokenColorCustomizations": {
+        "[Atom One Dark]": {
+            "comments": "#918e8e"
+        }
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.associations": {
+        "notebooks": "jupyter",
+        "01_etl": "jupyter",
+        "etl": "jupyter",
+        "notebook": "jupyter",
+        "scripts": "scripts",
+        "pipelines": "pipeline",
+        "00_landing": "dump",
+        "landing": "dump",
+        "01_bronze_raw": "bibliography",
+        "01_bronze": "bibliography",
+        "raw": "archive",
+        "ingest": "download",
+        "02_silver_domain": "batch",
+        "02_silver": "batch",
+        "domain": "batch",
+        "cleansed": "filter",
+        "transformed": "process",
+        "03_gold_dataproduct": "favicon",
+        "03_gold": "favicon",
+        "curated": "light",
+        "analytics": "graph",
+        "reporting": "graph",
+        "governance": "context",
+        "catalog": "context",
+        "data_contracts": "contract",
+        "contracts": "contract",
+        "data_quality": "test",
+        "quality": "test",
+        "tests": "test",
+        "ddl": "database",
+        "sql": "database",
+        "delta": "database",
+        "tables": "table",
+        "config": "config",
+        "table_config": "config",
+        "infra": "infrastructure",
+        "terraform": "terraform",
+        "synapse": "azure"
+    },
+    "material-icon-theme.files.associations": {},
+    "gitlens.graph.layout": "editor",
+    "python.createEnvironment.trigger": "off",
+    "python.analysis.extraPaths": [],
+    "jupyter.jupyterLaunchTimeout": 600000,
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "files.autoSave": "afterDelay",
+    "files.exclude": {
+        "**/.git": true
+    },
+    "explorer.compactFolders": false,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "accessibility.signals.lineHasError": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.terminalBell": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.terminalCommandSucceeded": {
+        "announcement": "off",
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "editor.stickyScroll.enabled": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.minimap.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "none",
+    "breadcrumbs.enabled": false,
+    "notebook.lineNumbers": "on",
+    "vim.smartRelativeLine": false,
+    "vim.leader": "<space>",
+    "git.openRepositoryInParentFolders": "never",
+    "markdown-mermaid.languages": ["mermaid"],
+    "markdown-mermaid.darkModeTheme": "base",
+    "markdown-mermaid.lightModeTheme": "base",
+    "markdown-preview-github-styles.darkTheme": "light",
+    "markdown-preview-github-styles.colorTheme": "light",
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.md": "default"
+    }
+}
