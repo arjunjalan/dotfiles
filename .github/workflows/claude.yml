@@ -32,6 +32,7 @@ jobs:
           fetch-depth: 1
 
       - name: Resolve CLAUDE.md symlink
+        # CLAUDE.md is a symlink to AGENT.md; claude-code-action crashes on symlinks (anthropics/claude-code-action#1187)
         run: |
           target=$(readlink CLAUDE.md)
           rm CLAUDE.md
