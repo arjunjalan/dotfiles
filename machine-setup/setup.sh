@@ -68,7 +68,7 @@ read -p "Start? (y/n): " start
 # -----------------------------------------------------------------------------
 # Step 1 — uv
 # -----------------------------------------------------------------------------
-if confirm "Step 1/7 — Install uv (Python package and env manager)"; then
+if confirm "Step 1/8 — Install uv (Python package and env manager)"; then
     if command -v uv &> /dev/null; then
         already_installed
         uv --version
@@ -82,7 +82,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 2 — VS Code
 # -----------------------------------------------------------------------------
-if confirm "Step 2/7 — Install VS Code"; then
+if confirm "Step 2/8 — Install VS Code"; then
     if command -v code &> /dev/null; then
         already_installed
         code --version
@@ -99,7 +99,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 3 — Node.js + npm
 # -----------------------------------------------------------------------------
-if confirm "Step 3/7 — Install Node.js and npm"; then
+if confirm "Step 3/8 — Install Node.js and npm"; then
     if command -v node &> /dev/null; then
         already_installed
         echo "Node.js: $(node --version)"
@@ -115,7 +115,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 4 — GitHub CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 4/7 — Install GitHub CLI"; then
+if confirm "Step 4/8 — Install GitHub CLI"; then
     if command -v gh &> /dev/null; then
         already_installed
         gh --version
@@ -128,7 +128,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 5 — Obsidian
 # -----------------------------------------------------------------------------
-if confirm "Step 5/7 — Install Obsidian"; then
+if confirm "Step 5/8 — Install Obsidian"; then
     if command -v obsidian &> /dev/null || dpkg -l obsidian &> /dev/null; then
         already_installed
     else
@@ -147,7 +147,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 6 — Gedit
 # -----------------------------------------------------------------------------
-if confirm "Step 6/7 — Install Gedit (text editor)"; then
+if confirm "Step 6/8 — Install Gedit (text editor)"; then
     if command -v gedit &> /dev/null; then
         already_installed
         gedit --version
