@@ -34,6 +34,7 @@ echo " - Node.js + npm"
 echo " - GitHub CLI"
 echo " - Obsidian"
 echo " - Gedit (text editor)"
+echo " - Claude Code CLI"
 echo "============================================="
 
 # -----------------------------------------------------------------------------
@@ -66,7 +67,7 @@ read -p "Start? (y/n): " start
 # -----------------------------------------------------------------------------
 # Step 1 — uv
 # -----------------------------------------------------------------------------
-if confirm "Step 1/6 — Install uv (Python package and env manager)"; then
+if confirm "Step 1/7 — Install uv (Python package and env manager)"; then
     if command -v uv &> /dev/null; then
         already_installed
         uv --version
@@ -80,7 +81,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 2 — VS Code
 # -----------------------------------------------------------------------------
-if confirm "Step 2/6 — Install VS Code"; then
+if confirm "Step 2/7 — Install VS Code"; then
     if command -v code &> /dev/null; then
         already_installed
         code --version
@@ -97,7 +98,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 3 — Node.js + npm
 # -----------------------------------------------------------------------------
-if confirm "Step 3/6 — Install Node.js and npm"; then
+if confirm "Step 3/7 — Install Node.js and npm"; then
     if command -v node &> /dev/null; then
         already_installed
         echo "Node.js: $(node --version)"
@@ -113,7 +114,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 4 — GitHub CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 4/6 — Install GitHub CLI"; then
+if confirm "Step 4/7 — Install GitHub CLI"; then
     if command -v gh &> /dev/null; then
         already_installed
         gh --version
@@ -126,7 +127,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 5 — Obsidian
 # -----------------------------------------------------------------------------
-if confirm "Step 5/6 — Install Obsidian"; then
+if confirm "Step 5/7 — Install Obsidian"; then
     if command -v obsidian &> /dev/null || dpkg -l obsidian &> /dev/null; then
         already_installed
     else
@@ -145,13 +146,26 @@ fi
 # -----------------------------------------------------------------------------
 # Step 6 — Gedit
 # -----------------------------------------------------------------------------
-if confirm "Step 6/6 — Install Gedit (text editor)"; then
+if confirm "Step 6/7 — Install Gedit (text editor)"; then
     if command -v gedit &> /dev/null; then
         already_installed
         gedit --version
     else
         sudo apt install gedit -y
         echo -e "${GREEN}Gedit installed.${NC}"
+    fi
+fi
+
+# -----------------------------------------------------------------------------
+# Step 7 — Claude Code CLI
+# -----------------------------------------------------------------------------
+if confirm "Step 7/7 — Install Claude Code CLI"; then
+    if command -v claude &> /dev/null; then
+        already_installed
+        claude --version
+    else
+        curl -fsSL https://claude.ai/install.sh | bash
+        echo -e "${GREEN}Claude Code CLI installed: $(claude --version)${NC}"
     fi
 fi
 
