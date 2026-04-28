@@ -1,6 +1,7 @@
 name: Claude Code Review
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
     # Optional: Only run on specific file changes
@@ -30,6 +31,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Resolve CLAUDE.md symlink
+        run: |
+          target=$(readlink CLAUDE.md)
+          rm CLAUDE.md
+          cp "$target" CLAUDE.md
 
       - name: Run Claude Code Review
         id: claude-review
