@@ -17,6 +17,9 @@ dotfiles/
 │   └── vscode/
 │       ├── extensions.txt — list of VS Code extensions to install
 │       └── settings.json  — VS Code user settings (Linux-ready)
+├── home/                 — personal dotfiles, symlinked into $HOME
+│   └── .bashrc           — shell config with git branch in prompt
+├── install.sh            — symlinks home/* into $HOME
 └── README.md
 ```
 
@@ -37,15 +40,18 @@ bash setup.sh
 
 bash git_config.sh
 
-**Step 4 — Install VS Code extensions:**
+**Step 4 — Symlink dotfiles:**
+
+bash ~/dotfiles/install.sh
+
+**Step 5 — Install VS Code extensions:**
 
 cat ~/dotfiles/app_config/vscode/extensions.txt | xargs -L1 code --install-extension
 
-**Step 5 — Apply VS Code settings:**
+**Step 6 — Apply VS Code settings:**
 
 cp ~/dotfiles/app_config/vscode/settings.json ~/.config/Code/User/settings.json
 
 ## Roadmap
 
-- config/ — personal dotfiles (.bashrc, .gitconfig) managed via symlinks
-- install.sh — symlink manager for config/
+- home/.gitconfig — version-controlled Git identity and aliases
