@@ -1,6 +1,8 @@
 # AGENT.md
 
-This file provides guidance to agentic coding tools (Claude Code, etc.) when working with code in this repository.
+This file provides guidance to agentic coding tools (Claude Code, Cursor, etc.) when working with code in this repository. It is the single source of truth, symlinked as CLAUDE.md and any other tool-specific filenames.
+
+This repo sets up a personal dev machine on Ubuntu — shell scripts install and configure tools, and VS Code settings are managed here.
 
 ## Script conventions
 
@@ -14,9 +16,4 @@ When adding a new tool to `setup.sh`, follow this pattern: wrap the install bloc
 
 ## VS Code settings
 
-The `material-icon-theme.folders.associations` block in `settings.json` maps data-engineering folder names (bronze/silver/gold lakehouse conventions) to icons — preserve this block when editing the file.
-
-## Roadmap (not yet implemented)
-
-- `config/` — personal dotfiles (`.bashrc`, `.gitconfig`) managed via symlinks
-- `install.sh` — symlink manager for `config/`
+The `material-icon-theme.folders.associations` block in `settings.json` maps data-engineering folder names (bronze/silver/gold lakehouse conventions) to icons. This block is easy to accidentally drop when reformatting the file — always verify it is intact after edits.
