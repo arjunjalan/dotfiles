@@ -35,6 +35,7 @@ echo " - GitHub CLI"
 echo " - Obsidian"
 echo " - Gedit (text editor)"
 echo " - Claude Code CLI"
+echo " - Docker + Docker Compose"
 echo "============================================="
 
 # -----------------------------------------------------------------------------
@@ -159,13 +160,38 @@ fi
 # -----------------------------------------------------------------------------
 # Step 7 — Claude Code CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 7/7 — Install Claude Code CLI"; then
+if confirm "Step 7/8 — Install Claude Code CLI"; then
     if command -v claude &> /dev/null; then
         already_installed
         claude --version
     else
         curl -fsSL https://claude.ai/install.sh | bash
         echo -e "${GREEN}Claude Code CLI installed: $(claude --version)${NC}"
+    fi
+fi
+
+# -----------------------------------------------------------------------------
+# Step 8 — Docker + Docker Compose
+# -----------------------------------------------------------------------------
+if confirm "Step 8/8 — Install Docker + Docker Compose"; then
+    if command -v docker &> /dev/null; then
+        already_installed
+        docker --version
+        docker compose version
+    else
+        sudo apt update
+        sudo apt install -y ca-certificates curl gnupg
+        sudo install -m 0755 -d /etc/apt/keyrings
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+        sudo chmod a+r /etc/apt/keyrings/docker.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" \
+            | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        sudo apt update
+        sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        sudo usermod -aG docker "$USER"
+        echo -e "${GREEN}Docker installed: $(docker --version)${NC}"
+        echo -e "${GREEN}Docker Compose installed: $(docker compose version)${NC}"
+        echo -e "${YELLOW}Log out and back in for group changes to take effect.${NC}"
     fi
 fi
 
