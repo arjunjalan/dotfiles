@@ -23,6 +23,21 @@ dotfiles/
 └── README.md
 ```
 
+## What `setup.sh` installs
+
+| Step | Tool | Notes |
+|------|------|-------|
+| 1 | uv | Python package and environment manager |
+| 2 | VS Code | via Microsoft APT repo |
+| 3 | Node.js + npm | LTS, via nodesource |
+| 4 | GitHub CLI | `gh` |
+| 5 | Obsidian | latest `.deb` from GitHub releases |
+| 6 | Gedit | text editor |
+| 7 | Claude Code CLI | |
+| 8 | Docker + Docker Compose | adds user to `docker` group — requires logout/login |
+| 9 | tree | directory viewer |
+| 10 | Codex CLI | `@openai/codex`, installed via `sudo npm install -g` |
+
 ## Usage
 
 ### On a new machine
