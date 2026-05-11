@@ -37,6 +37,7 @@ dotfiles/
 | 8 | Docker + Docker Compose | adds user to `docker` group — requires logout/login |
 | 9 | tree | directory viewer |
 | 10 | Codex CLI | `@openai/codex`, installed via `sudo npm install -g` |
+| 11 | Google Chrome | via official `.deb`; set as default browser with `xdg-settings` |
 
 ## Usage
 
