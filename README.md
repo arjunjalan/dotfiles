@@ -18,7 +18,7 @@ dotfiles/
 │       ├── extensions.txt — list of VS Code extensions to install
 │       └── settings.json  — VS Code user settings (Linux-ready)
 ├── home/                 — personal dotfiles, symlinked into $HOME
-│   └── .bashrc           — shell config with git branch in prompt
+│   └── .bashrc           — shell config; prompt shows user, path, and git branch
 ├── install.sh            — symlinks home/* into $HOME
 └── README.md
 ```
