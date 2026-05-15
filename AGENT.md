@@ -10,13 +10,14 @@ Both shell scripts (`setup.sh`, `git_config.sh`) follow the same structure:
 - `set -e` — abort on any error
 - `confirm()` helper — prints a yellow prompt and reads `y/n` before each step
 - `already_installed()` — skips gracefully if a tool is already present
-- Steps are numbered and labeled (e.g. `Step 1/10`); currently 10 steps total
+- Steps are numbered and labeled (e.g. `Step 1/12`); currently 12 steps total
 
 When adding a new tool to `setup.sh`, follow this pattern: wrap the install block in `if confirm "Step N/M — ..."`, update the step count in the header echo block, check `command -v` first and call `already_installed` if present, then install and print a green confirmation.
 
 Two steps have post-install side effects worth noting:
 - **Docker (Step 8)** — runs `sudo usermod -aG docker "$USER"`; the user must log out and back in for the group change to take effect.
-- **Codex CLI (Step 10)** — installed via `sudo npm install -g @openai/codex` rather than a plain `npm install -g`, since the system Node.js from nodesource requires elevated permissions for global installs.
+- **Portainer (Step 9)** — runs as a Docker container named `portainer` with the `portainer_data` volume and publishes `https://localhost:9443`.
+- **Codex CLI (Step 11)** — installed via `sudo npm install -g @openai/codex` rather than a plain `npm install -g`, since the system Node.js from nodesource requires elevated permissions for global installs.
 
 ## VS Code settings
 

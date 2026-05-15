@@ -35,9 +35,10 @@ dotfiles/
 | 6 | Gedit | text editor |
 | 7 | Claude Code CLI | |
 | 8 | Docker + Docker Compose | adds user to `docker` group — requires logout/login |
-| 9 | tree | directory viewer |
-| 10 | Codex CLI | `@openai/codex`, installed via `sudo npm install -g` |
-| 11 | Google Chrome | via official `.deb`; set as default browser with `xdg-settings` |
+| 9 | Portainer | optional Docker web UI at `https://localhost:9443` |
+| 10 | tree | directory viewer |
+| 11 | Codex CLI | `@openai/codex`, installed via `sudo npm install -g` |
+| 12 | Google Chrome | via official `.deb`; set as default browser with `xdg-settings` |
 
 ## Usage
 

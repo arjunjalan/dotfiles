@@ -36,6 +36,7 @@ echo " - Obsidian"
 echo " - Gedit (text editor)"
 echo " - Claude Code CLI"
 echo " - Docker + Docker Compose"
+echo " - Portainer (optional Docker web UI)"
 echo " - tree (directory viewer)"
 echo " - Codex CLI (OpenAI)"
 echo " - Google Chrome (default browser)"
@@ -71,7 +72,7 @@ read -p "Start? (y/n): " start
 # -----------------------------------------------------------------------------
 # Step 1 — uv
 # -----------------------------------------------------------------------------
-if confirm "Step 1/11 — Install uv (Python package and env manager)"; then
+if confirm "Step 1/12 — Install uv (Python package and env manager)"; then
     if command -v uv &> /dev/null; then
         already_installed
         uv --version
@@ -85,7 +86,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 2 — VS Code
 # -----------------------------------------------------------------------------
-if confirm "Step 2/11 — Install VS Code"; then
+if confirm "Step 2/12 — Install VS Code"; then
     if command -v code &> /dev/null; then
         already_installed
         code --version
@@ -102,7 +103,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 3 — Node.js + npm
 # -----------------------------------------------------------------------------
-if confirm "Step 3/11 — Install Node.js and npm"; then
+if confirm "Step 3/12 — Install Node.js and npm"; then
     if command -v node &> /dev/null; then
         already_installed
         echo "Node.js: $(node --version)"
@@ -118,7 +119,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 4 — GitHub CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 4/11 — Install GitHub CLI"; then
+if confirm "Step 4/12 — Install GitHub CLI"; then
     if command -v gh &> /dev/null; then
         already_installed
         gh --version
@@ -131,7 +132,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 5 — Obsidian
 # -----------------------------------------------------------------------------
-if confirm "Step 5/11 — Install Obsidian"; then
+if confirm "Step 5/12 — Install Obsidian"; then
     if command -v obsidian &> /dev/null || dpkg -l obsidian &> /dev/null; then
         already_installed
     else
@@ -150,7 +151,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 6 — Gedit
 # -----------------------------------------------------------------------------
-if confirm "Step 6/11 — Install Gedit (text editor)"; then
+if confirm "Step 6/12 — Install Gedit (text editor)"; then
     if command -v gedit &> /dev/null; then
         already_installed
         gedit --version
@@ -163,7 +164,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 7 — Claude Code CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 7/11 — Install Claude Code CLI"; then
+if confirm "Step 7/12 — Install Claude Code CLI"; then
     if command -v claude &> /dev/null; then
         already_installed
         claude --version
@@ -176,7 +177,7 @@ fi
 # -----------------------------------------------------------------------------
 # Step 8 — Docker + Docker Compose
 # -----------------------------------------------------------------------------
-if confirm "Step 8/11 — Install Docker + Docker Compose"; then
+if confirm "Step 8/12 — Install Docker + Docker Compose"; then
     if command -v docker &> /dev/null; then
         already_installed
         docker --version
@@ -197,9 +198,33 @@ if confirm "Step 8/11 — Install Docker + Docker Compose"; then
 fi
 
 # -----------------------------------------------------------------------------
-# Step 9 — tree
+# Step 9 — Portainer
 # -----------------------------------------------------------------------------
-if confirm "Step 9/11 — Install tree (directory viewer)"; then
+if confirm "Step 9/12 — Install Portainer (Docker web UI)"; then
+    if ! command -v docker &> /dev/null; then
+        echo -e "${YELLOW}Docker is not installed. Install Docker first, then rerun this step.${NC}"
+    elif sudo docker container inspect portainer &> /dev/null; then
+        already_installed
+        sudo docker start portainer > /dev/null
+        echo -e "${GREEN}Portainer is available at https://localhost:9443${NC}"
+    else
+        sudo docker volume inspect portainer_data &> /dev/null || sudo docker volume create portainer_data > /dev/null
+        sudo docker run -d \
+            -p 9443:9443 \
+            --name portainer \
+            --restart=always \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v portainer_data:/data \
+            portainer/portainer-ce:lts
+        echo -e "${GREEN}Portainer installed and running.${NC}"
+        echo -e "${GREEN}Open https://localhost:9443 to finish setup.${NC}"
+    fi
+fi
+
+# -----------------------------------------------------------------------------
+# Step 10 — tree
+# -----------------------------------------------------------------------------
+if confirm "Step 10/12 — Install tree (directory viewer)"; then
     if command -v tree &> /dev/null; then
         already_installed
         tree --version
@@ -210,9 +235,9 @@ if confirm "Step 9/11 — Install tree (directory viewer)"; then
 fi
 
 # -----------------------------------------------------------------------------
-# Step 10 — Codex CLI
+# Step 11 — Codex CLI
 # -----------------------------------------------------------------------------
-if confirm "Step 10/11 — Install Codex CLI (OpenAI)"; then
+if confirm "Step 11/12 — Install Codex CLI (OpenAI)"; then
     if command -v codex &> /dev/null; then
         already_installed
         codex --version
@@ -223,9 +248,9 @@ if confirm "Step 10/11 — Install Codex CLI (OpenAI)"; then
 fi
 
 # -----------------------------------------------------------------------------
-# Step 11 — Google Chrome
+# Step 12 — Google Chrome
 # -----------------------------------------------------------------------------
-if confirm "Step 11/11 — Install Google Chrome (default browser)"; then
+if confirm "Step 12/12 — Install Google Chrome (default browser)"; then
     if command -v google-chrome &> /dev/null; then
         already_installed
         google-chrome --version
